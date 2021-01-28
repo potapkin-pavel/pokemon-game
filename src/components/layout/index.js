@@ -2,8 +2,12 @@ import PropTypes from 'prop-types'
 import s from './style.module.css'
 
 const Layout = function ({ id, title, desc, urlBg, colorBg }) {
+  const styleObj = {
+    backgroundImage: urlBg && `url(${urlBg})`,
+    backgroundColor: colorBg && colorBg
+  }
   return (
-    <section className={s.root} id={id} style={{ backgroundImage: `url(${urlBg})`, backgroundColor: colorBg }}>
+    <section className={s.root} id={id} style={styleObj}>
       <div className={s.wrapper}>
         <article>
           <div className={s.title}>
