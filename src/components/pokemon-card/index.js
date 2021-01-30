@@ -8,7 +8,7 @@ const PokemonCard = function ({ name, img, id, type, values }) {
   const handleClick = function () { setActive(true) }
   return (
     <div className={s.root} onClick={handleClick}>
-      <div className={`${s.pokemonCard} ${isActive ? s.active : null}`}>
+      <div className={`${s.pokemonCard}${isActive ? ' ' + s.active : ''}`}>
         <div className={s.cardFront}>
           <div className={`${s.wrap} ${s.front}`}>
             <div className={`${s.pokemon} ${s[type]}`}>
