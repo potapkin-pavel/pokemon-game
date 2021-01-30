@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import s from './style.module.css'
 
-const Layout = function ({ id, title, desc, urlBg, colorBg }) {
+const Layout = function ({ id, title, urlBg, colorBg, children }) {
   const styleObj = {
     backgroundImage: urlBg && `url(${urlBg})`,
     backgroundColor: colorBg && colorBg
@@ -14,8 +14,8 @@ const Layout = function ({ id, title, desc, urlBg, colorBg }) {
             <h3>{title}</h3>
             <span className={s.separator}></span>
           </div>
-          <div className={s.desc + ' ' + s.full}>
-            <p>{desc}</p>
+          <div className={`${s.desc} ${s.full}`}>
+            {children}
           </div>
         </article>
       </div>
@@ -26,9 +26,9 @@ const Layout = function ({ id, title, desc, urlBg, colorBg }) {
 Layout.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
   colorBg: PropTypes.string,
-  urlBg: PropTypes.string
+  urlBg: PropTypes.string,
+  children: PropTypes.any
 }
 
 export default Layout
