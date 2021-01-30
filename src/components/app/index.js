@@ -3,6 +3,8 @@ import Header from '../header'
 import Layout from '../layout'
 import PokemonCard from '../pokemon-card'
 import bg from '../../assets/bg3.jpg'
+import s from './style.module.css'
+
 const pokemons = [
   {
     abilities: [
