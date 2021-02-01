@@ -6,7 +6,7 @@ import s from './style.module.css'
 
 const PokemonCard = function ({ name, img, id, type, values }) {
   const [isActive, setActive] = useState(false)
-  const handleClick = function () { setActive(true) }
+  const handleClick = function () { setActive(!isActive) }
   return (
     <div className={s.root} onClick={handleClick}>
       <div className={classNames(s.pokemonCard, { [s.active]: isActive })}>
