@@ -5,7 +5,7 @@ import s from './style.module.css'
 const Navbar = function ({ isBurgerActive, setBurgerActive }) {
   const handleClick = () => { setBurgerActive(!isBurgerActive) }
   return (
-    <nav id="navbar">
+    <nav id={s.navbar}>
       <div className={s.navWrapper}>
         <p className={s.brand}>LOGO</p>
         <div onClick={handleClick}>
