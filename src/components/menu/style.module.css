@@ -4,11 +4,11 @@
   right: 0;
   height: calc( 100vh - 120px );
   width: calc( 100vw - 120px );
-  background: #fafafa;
+  background: #fafafa00;
 }
 
 .menuContainer.active > .overlay {
-  animation: overlay-slide-in 300ms forwards 300ms;
+  animation: overlay-slide-in 600ms forwards 300ms;
 }
 
 @keyframes overlay-slide-in {
@@ -21,7 +21,7 @@
 }
 
 .menuContainer > .overlay {
-  animation: overlay-slide-out 300ms forwards;
+  animation: overlay-slide-out 600ms forwards;
 }
 
 @keyframes overlay-slide-out {
@@ -157,7 +157,7 @@
 
 .menuContainer ul li a:hover::after {
   content: ' »';
-  color: #f300b4;
+  color: #53c9ff;
 }
 
 .menuContainer a,
@@ -167,7 +167,7 @@
 
 .menuContainer a:hover,
 .menuContainer a:active {
-  color: #f300b4;
+  color: #53c9ff;
 }
 
 @media only screen and (max-width: 649px) {
