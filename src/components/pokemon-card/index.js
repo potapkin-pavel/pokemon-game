@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import cardBackSideImg from '../../assets/card-back-side.jpg'
+import cardBackSideImg from '../../assets/card-back-side-2.jpg'
 import classNames from 'classnames'
 import s from './style.module.css'
 

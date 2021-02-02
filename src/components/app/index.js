@@ -2,7 +2,6 @@ import AboutPage from '../../routes/about'
 import ContactPage from '../../routes/contact'
 import GamePage from '../../routes/game'
 import HomePage from '../../routes/home'
-
 import { useState } from 'react'
 
 const App = function () {
