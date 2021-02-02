@@ -3,13 +3,12 @@ import classNames from 'classnames'
 import s from './style.module.css'
 
 const Navbar = function ({ isBurgerActive, setBurgerActive }) {
+  const handleClick = () => { setBurgerActive(!isBurgerActive) }
   return (
     <nav id="navbar">
       <div className={s.navWrapper}>
-        <p className={s.brand}>
-          LOGO
-        </p>
-        <div onClick={() => { setBurgerActive(!isBurgerActive) }}>
+        <p className={s.brand}>LOGO</p>
+        <div onClick={handleClick}>
           <a className={classNames(s.menuButton, { [s.active]: isBurgerActive })}>
             <span />
           </a>
