@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types'
-import MenuHeader from '../menu-header'
 import s from './style.module.css'
 
 const Header = function ({ title, desc, onHeaderClick }) {
-  const onMenuHeaderClick = (page) => {
-    onHeaderClick && onHeaderClick(page)
-  }
   return (
     <header className={s.root}>
-      <MenuHeader onMenuHeaderClick={onMenuHeaderClick}/>
       <div className={s.forest}></div>
       <div className={s.container}>
         <h1>{title}</h1>

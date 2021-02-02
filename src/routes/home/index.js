@@ -6,14 +6,16 @@ import PokemonCard from '../../components/pokemon-card'
 import bg from '../../assets/bg3.jpg'
 import s from './style.module.css'
 import pokemons from '../../data/pokemons.json'
+import MenuHeader from '../../components/menu-header'
 
 const HomePage = function ({ onChangePage }) {
-  const onHeaderClick = (page) => {
+  const onMenuHeaderClick = (page) => {
     onChangePage && onChangePage(page)
   }
   return (
     <>
-      <Header title='Pokemon Game' desc='Home Page' onHeaderClick={onHeaderClick}/>
+      <MenuHeader onMenuHeaderClick={onMenuHeaderClick}/>
+      <Header title='Pokemon Game' desc='Home Page'/>
       <Layout id='1' title='Title' urlBg={bg}>
         <p>In the game two players face off against one another, one side playing as &quot;blue&quot;,
           the other as &quot;red&quot; on a 3x3 grid.</p>
