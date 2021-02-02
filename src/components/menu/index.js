@@ -10,8 +10,8 @@ const Menu = function ({ isMenuActive, onMenuClick, setMenuActive }) {
   }
   return (
     <div className={classNames(s.menuContainer, { [s.active]: isMenuActive }, { [s.deactive]: !isMenuActive })} >
-      <div className="overlay" />
-      <div className="menuItems">
+      <div className={s.overlay}/>
+      <div className={s.menuItems}>
         <ul>
           <MenuItem href={'#welcome'} onLinkClick={() => onLinkClick('app')}>HOME</MenuItem>
           <MenuItem href={'#game'} onLinkClick={() => onLinkClick('game')}>GAME</MenuItem>
