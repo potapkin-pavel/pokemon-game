@@ -22,7 +22,7 @@ const HomePage = function ({ onChangePage }) {
         <p>Each player has five cards in a hand and the aim is to capture the opponent&apos;s cards by
           turning them into the player&apos;s own color of red or blue.</p>
       </Layout>
-      <Layout id='2' title='This is Second Layout' colorBg='#d4d4d4'>
+      <Layout id='2' title='This is Second Layout' colorBg='#d4d4d400'>
         <div className={s.flex}>
           {pokemons.map(pokemon => <PokemonCard key={pokemon.id} name={pokemon.name} img={pokemon.img}
           id={pokemon.id} type={pokemon.type} values={pokemon.values}/>)}
