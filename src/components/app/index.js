@@ -12,7 +12,7 @@ const App = function () {
   }
   switch (page) {
     case 'about':
-      return <AboutPage onChangePage={(page) => handleChangePage(page)}/>
+      return <AboutPage onChangePage={handleChangePage}/>
     case 'contact':
       return <ContactPage onChangePage={handleChangePage}/>
     case 'game':
