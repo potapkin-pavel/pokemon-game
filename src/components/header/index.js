@@ -8,7 +8,7 @@ const Header = function ({ title, desc, onHeaderClick }) {
   }
   return (
     <header className={s.root}>
-      <MenuHeader onMenuHeaderClick={(page) => onMenuHeaderClick(page)}/>
+      <MenuHeader onMenuHeaderClick={onMenuHeaderClick}/>
       <div className={s.forest}></div>
       <div className={s.container}>
         <h1>{title}</h1>

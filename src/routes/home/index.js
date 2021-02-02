@@ -13,7 +13,7 @@ const HomePage = function ({ onChangePage }) {
   }
   return (
     <>
-      <Header title='Pokemon Game' desc='Home Page' onHeaderClick={(page) => onHeaderClick(page)}/>
+      <Header title='Pokemon Game' desc='Home Page' onHeaderClick={onHeaderClick}/>
       <Layout id='1' title='Title' urlBg={bg}>
         <p>In the game two players face off against one another, one side playing as &quot;blue&quot;,
           the other as &quot;red&quot; on a 3x3 grid.</p>

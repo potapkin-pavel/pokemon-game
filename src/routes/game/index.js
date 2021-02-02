@@ -7,7 +7,7 @@ function GamePage ({ onChangePage }) {
   }
   return (
     <>
-      <Header title='Pokemon Game' desc='Game Page' onHeaderClick={(page) => onHeaderClick(page)}/>
+      <Header title='Pokemon Game' desc='Game Page' onHeaderClick={onHeaderClick}/>
     </>
   )
 }

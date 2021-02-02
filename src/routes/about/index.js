@@ -7,7 +7,7 @@ function AboutPage ({ onChangePage }) {
   }
   return (
     <>
-      <Header title='Pokemon Game' desc='About Page' onHeaderClick={(page) => onHeaderClick(page)}/>
+      <Header title='Pokemon Game' desc='About Page' onHeaderClick={onHeaderClick}/>
     </>
   )
 }

@@ -7,7 +7,7 @@ function ContactPage ({ onChangePage }) {
   }
   return (
     <>
-      <Header title='Pokemon Game' desc='Contact Page' onHeaderClick={(page) => onHeaderClick(page)}/>
+      <Header title='Pokemon Game' desc='Contact Page' onHeaderClick={onHeaderClick}/>
     </>
   )
 }
