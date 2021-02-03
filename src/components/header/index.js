@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import s from './style.module.css'
 
-const Header = function ({ title, desc }) {
+const Header = function ({ title, desc, onHeaderClick }) {
   return (
     <header className={s.root}>
       <div className={s.forest}></div>
@@ -14,8 +14,9 @@ const Header = function ({ title, desc }) {
 }
 
 Header.propTypes = {
+  desc: PropTypes.string,
   title: PropTypes.string,
-  desc: PropTypes.string
+  onHeaderClick: PropTypes.func.isRequired
 }
 
 Header.defaultProps = {

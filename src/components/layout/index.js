@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import s from './style.module.css'
+import classNames from 'classnames'
 
 const Layout = function ({ id, title, urlBg, colorBg, children }) {
   const styleObj = {
@@ -14,7 +15,7 @@ const Layout = function ({ id, title, urlBg, colorBg, children }) {
             <h3>{title}</h3>
             <span className={s.separator}></span>
           </div>
-          <div className={`${s.desc} ${s.full}`}>
+          <div className={classNames(s.desc, s.full)}>
             {children}
           </div>
         </article>

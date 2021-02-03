@@ -1,22 +1,25 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import cardBackSideImg from '../../assets/card-back-side.jpg'
+import cardBackSideImg from '../../assets/card-back-side-2.jpg'
+import classNames from 'classnames'
 import s from './style.module.css'
 
 const PokemonCard = function ({ name, img, id, type, values }) {
   const [isActive, setActive] = useState(false)
-  const handleClick = function () { setActive(true) }
+  const handleClick = function () { setActive(!isActive) }
   return (
     <div className={s.root} onClick={handleClick}>
-      <div className={`${s.pokemonCard}${isActive ? ' ' + s.active : ''}`}>
+      <div className={classNames(s.pokemonCard, { [s.active]: isActive })}>
         <div className={s.cardFront}>
-          <div className={`${s.wrap} ${s.front}`}>
+          <div className={classNames(s.wrap, s.front)}>
             <div className={`${s.pokemon} ${s[type]}`}>
               <div className={s.values}>
-                <div className={`${s.count} ${s.top}`}>{values.top}</div>
-                <div className={`${s.count} ${s.right}`}>{values.right}</div>
-                <div className={`${s.count} ${s.bottom}`}>{values.bottom}</div>
-                <div className={`${s.count} ${s.left}`}>{values.left}</div>
+                <div className={classNames(s.count, s.top)}>{values.top}</div>
+                <div className={classNames(s.count, s.right)}>{values.right}
+                  </div>
+                <div className={classNames(s.count, s.bottom)}>{values.bottom}
+                  </div>
+                <div className={classNames(s.count, s.left)}>{values.left}</div>
               </div>
               <div className={s.imgContainer}>
                 <img src={img} alt={name}/>
@@ -30,7 +33,7 @@ const PokemonCard = function ({ name, img, id, type, values }) {
           </div>
         </div>
         <div className={s.cardBack}>
-          <div className={`${s.wrap} ${s.back}`}>
+          <div className={classNames(s.wrap, s.back)}>
             <img src={cardBackSideImg} alt="Сard Backed"/>
           </div>
         </div>
