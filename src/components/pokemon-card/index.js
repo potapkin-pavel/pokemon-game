@@ -15,8 +15,10 @@ const PokemonCard = function ({ name, img, id, type, values }) {
             <div className={`${s.pokemon} ${s[type]}`}>
               <div className={s.values}>
                 <div className={classNames(s.count, s.top)}>{values.top}</div>
-                <div className={classNames(s.count, s.right)}>{values.right}</div>
-                <div className={classNames(s.count, s.bottom)}>{values.bottom}</div>
+                <div className={classNames(s.count, s.right)}>{values.right}
+                  </div>
+                <div className={classNames(s.count, s.bottom)}>{values.bottom}
+                  </div>
                 <div className={classNames(s.count, s.left)}>{values.left}</div>
               </div>
               <div className={s.imgContainer}>

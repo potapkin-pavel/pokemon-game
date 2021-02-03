@@ -27,11 +27,15 @@ const Menu = function ({ isMenuActive, onMenuClick, setMenuActive }) {
     onMenuClick && onMenuClick(page)
   }
   return (
-    <div className={classNames(s.menuContainer, { [s.active]: isMenuActive }, { [s.deactive]: !isMenuActive })} >
+    <div className={classNames(s.menuContainer, { [s.active]: isMenuActive },
+      { [s.deactive]: !isMenuActive })} >
       <div className={s.overlay}/>
       <div className={s.menuItems}>
         <ul>
-          {pages.map(page => <MenuItem key={page.path} href={`/${page.path}`} onLinkClick={() => onLinkClick(page.path)}>{page.title.toUpperCase()}</MenuItem>)}
+          {pages.map(page =>
+            <MenuItem key={page.path} href={`/${page.path}`}
+              onLinkClick={() => onLinkClick(page.path)}>
+                {page.title.toUpperCase()}</MenuItem>)}
         </ul>
       </div>
     </div>

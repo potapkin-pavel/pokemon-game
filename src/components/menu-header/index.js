@@ -10,7 +10,8 @@ const MenuHeader = function ({ onMenuHeaderClick }) {
   }
   return (
     <>
-      <Menu isMenuActive={isActive} setMenuActive={setActive} onMenuClick={onMenuClick}/>
+      <Menu isMenuActive={isActive} setMenuActive={setActive}
+        onMenuClick={onMenuClick}/>
       <Navbar isBurgerActive={isActive} setBurgerActive={setActive} />
     </>
   )
