@@ -4,6 +4,24 @@ import s from './style.module.css'
 import MenuItem from '../menu-item'
 
 const Menu = function ({ isMenuActive, onMenuClick, setMenuActive }) {
+  const pages = [
+    {
+      path: 'app',
+      title: 'home'
+    },
+    {
+      path: 'game',
+      title: 'game'
+    },
+    {
+      path: 'about',
+      title: 'about'
+    },
+    {
+      path: 'contact',
+      title: 'contact'
+    }
+  ]
   const onLinkClick = (page) => {
     setMenuActive(!isMenuActive)
     onMenuClick && onMenuClick(page)
@@ -13,10 +31,7 @@ const Menu = function ({ isMenuActive, onMenuClick, setMenuActive }) {
       <div className={s.overlay}/>
       <div className={s.menuItems}>
         <ul>
-          <MenuItem href={'#welcome'} onLinkClick={() => onLinkClick('app')}>HOME</MenuItem>
-          <MenuItem href={'#game'} onLinkClick={() => onLinkClick('game')}>GAME</MenuItem>
-          <MenuItem href={'#about'} onLinkClick={() => onLinkClick('about')}>ABOUT</MenuItem>
-          <MenuItem href={'#contact'} onLinkClick={() => onLinkClick('contact')}>CONTACT</MenuItem>
+          {pages.map(page => <MenuItem key={page.path} href={`/${page.path}`} onLinkClick={() => onLinkClick(page.path)}>{page.title.toUpperCase()}</MenuItem>)}
         </ul>
       </div>
     </div>
