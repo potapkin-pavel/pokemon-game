@@ -9,9 +9,6 @@ const Navbar = function ({ isBurgerActive, setBurgerActive }) {
       <div className={s.navWrapper}>
         <p className={s.brand}>LOGO</p>
         <button onClick={handleClick} className={classNames(s.container, { [s.active]: isBurgerActive })}>
-          {/* <a className={classNames(s.menuButton, { [s.active]: isBurgerActive })}>
-            <span />
-          </a> */}
           <div className={s.bar1}></div>
           <div className={s.bar2}></div>
           <div className={s.bar3}></div>
