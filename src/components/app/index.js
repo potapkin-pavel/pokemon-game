@@ -17,8 +17,8 @@ const App = function () {
         <Route path='/404' component={NotFoundPage}/>
         <Route>
           <>
-            <MenuHeader isBgActive={!match.isExact}/>
-            <div className={classNames(s.wrap, { [s.isHomePage]: match.isExact })}>
+            <MenuHeader isBgActive={match.isExact}/>
+            <div className={classNames(s.wrap, { [s.isHomePage]: !match.isExact })}>
               <Switch>
                 <Route path="/" exact component={HomePage}/>
                 <Route path="/home" component={HomePage}/>

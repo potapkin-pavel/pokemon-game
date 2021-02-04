@@ -9,19 +9,21 @@ const Menu = function ({ isBgActive, setMenuActive, pagesList }) {
   const onMenuItemClick = () => {
     setMenuActive(!isBgActive)
   }
-  return (
-    <div className={classNames(s.menuContainer, { [s.active]: isBgActive }, { [s.deactive]: !isBgActive })} >
-      <div className={s.overlay}/>
-      <div className={s.menuItems}>
-        <ul>
-          {pagesList.map(page =>
-            <MenuItem key={page.path} href={`/${page.path}`} onMenuItemClick={onMenuItemClick}>
-              {page.title.toUpperCase()}
-            </MenuItem>)}
-        </ul>
+  if (isBgActive) {
+    return (
+      <div className={classNames(s.menuContainer, isBgActive ? [s.active] : [s.deactive])} >
+        <div className={s.overlay}/>
+        <div className={s.menuItems}>
+          <ul>
+            {pagesList.map(page =>
+              <MenuItem key={page.path} href={`/${page.path}`} onMenuItemClick={onMenuItemClick}>
+                {page.title.toUpperCase()}
+              </MenuItem>)}
+          </ul>
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else return <></>
 }
 
 Menu.propTypes = {
