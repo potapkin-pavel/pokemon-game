@@ -23,11 +23,11 @@ const pages = [
 ]
 
 const MenuHeader = function ({ isBgActive }) {
-  const [isActive, setActive] = useState(isBgActive)
+  const [isActive, setActive] = useState(false)
   return (
     <>
-      <Menu isBgActive={isActive} setMenuActive={setActive} pagesList={pages}/>
-      <Navbar isBgActive={isActive} setBgActive={setActive} />
+      <Menu isActive={isActive} setActive={setActive} pagesList={pages}/>
+      <Navbar isBgActive={isBgActive} isActive={isActive} setActive={setActive} />
     </>
   )
 }
