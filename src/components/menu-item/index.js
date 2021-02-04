@@ -1,20 +1,18 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-const MenuItem = function ({ href, onLinkClick, children }) {
-  const handleLinkClick = () => {
-    onLinkClick && onLinkClick()
-  }
+const MenuItem = function ({ href, children, onMenuItemClick }) {
   return (
     <li>
-      <a href={href} onClick={handleLinkClick}>{children}</a>
+      <Link to={href} onClick={onMenuItemClick}>{children}</Link>
     </li>
   )
 }
 
 MenuItem.propTypes = {
-  onLinkClick: PropTypes.func.isRequired,
   children: PropTypes.string.isRequired,
-  href: PropTypes.string
+  href: PropTypes.string,
+  onMenuItemClick: PropTypes.func
 }
 
 MenuItem.defaultProps = {
