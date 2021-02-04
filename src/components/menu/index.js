@@ -5,36 +5,16 @@ import MenuItem from '../menu-item'
 
 import s from './style.module.css'
 
-const Menu = function ({ isBgActive, setMenuActive }) {
+const Menu = function ({ isBgActive, setMenuActive, pagesList }) {
   const onMenuItemClick = () => {
     setMenuActive(!isBgActive)
   }
-
-  const pages = [
-    {
-      path: 'home',
-      title: 'home'
-    },
-    {
-      path: 'game',
-      title: 'game'
-    },
-    {
-      path: 'about',
-      title: 'about'
-    },
-    {
-      path: 'contact',
-      title: 'contact'
-    }
-  ]
-
   return (
     <div className={classNames(s.menuContainer, { [s.active]: isBgActive }, { [s.deactive]: !isBgActive })} >
       <div className={s.overlay}/>
       <div className={s.menuItems}>
         <ul>
-          {pages.map(page =>
+          {pagesList.map(page =>
             <MenuItem key={page.path} href={`/${page.path}`} onMenuItemClick={onMenuItemClick}>
               {page.title.toUpperCase()}
             </MenuItem>)}
@@ -46,7 +26,8 @@ const Menu = function ({ isBgActive, setMenuActive }) {
 
 Menu.propTypes = {
   isBgActive: PropTypes.bool.isRequired,
-  setMenuActive: PropTypes.func.isRequired
+  setMenuActive: PropTypes.func.isRequired,
+  pagesList: PropTypes.array.isRequired
 }
 
 export default Menu
