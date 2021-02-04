@@ -1,21 +1,33 @@
-import PropTypes from 'prop-types'
-import Header from '../../components/header'
-import MenuHeader from '../../components/menu-header'
+import { useState } from 'react'
 
-function GamePage ({ onChangePage }) {
-  const onMenuHeaderClick = (page) => {
-    onChangePage && onChangePage(page)
+import Footer from '../../components/footer'
+import Layout from '../../components/layout'
+import PokemonCard from '../../components/pokemon-card'
+
+import s from './style.module.css'
+
+import pokemonsArray from '../../data/pokemons.json'
+
+function GamePage () {
+  const [pokemons, setPokemons] = useState(pokemonsArray)
+
+  const handleCardClick = (text) => {
+    setPokemons(pokemonsArray => pokemonsArray.map(item =>
+      item.id === text ? { ...item, isActive: !item.isActive } : item))
   }
+
   return (
     <>
-      <MenuHeader onMenuHeaderClick={onMenuHeaderClick}/>
-      <Header title='Pokemon Game' desc='Game Page'/>
+      <Layout id='1' title='This is Game Page' colorBg='#d4d4d4'>
+        <div className={s.flex}>
+          {pokemons.map(pokemon =>
+            <PokemonCard key={pokemon.id} name={pokemon.name} img={pokemon.img} id={pokemon.id} type={pokemon.type}
+              values={pokemon.values} isActive={pokemon.isActive} onCardClick={() => handleCardClick(pokemon.id)}/>)}
+        </div>
+      </Layout>
+      <Footer/>
     </>
   )
-}
-
-GamePage.propTypes = {
-  onChangePage: PropTypes.func
 }
 
 export default GamePage

@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 import cardBackSideImg from '../../assets/card-back-side-2.jpg'
 import classNames from 'classnames'
 import s from './style.module.css'
 
-const PokemonCard = function ({ name, img, id, type, values }) {
-  const [isActive, setActive] = useState(false)
-  const handleClick = function () { setActive(!isActive) }
+const PokemonCard = function ({ name, img, id, type, values, isActive, onCardClick }) {
+  const handleClick = () => {
+    onCardClick()
+  }
   return (
     <div className={s.root} onClick={handleClick}>
       <div className={classNames(s.pokemonCard, { [s.active]: isActive })}>
@@ -15,10 +15,8 @@ const PokemonCard = function ({ name, img, id, type, values }) {
             <div className={`${s.pokemon} ${s[type]}`}>
               <div className={s.values}>
                 <div className={classNames(s.count, s.top)}>{values.top}</div>
-                <div className={classNames(s.count, s.right)}>{values.right}
-                  </div>
-                <div className={classNames(s.count, s.bottom)}>{values.bottom}
-                  </div>
+                <div className={classNames(s.count, s.right)}>{values.right}</div>
+                <div className={classNames(s.count, s.bottom)}>{values.bottom}</div>
                 <div className={classNames(s.count, s.left)}>{values.left}</div>
               </div>
               <div className={s.imgContainer}>
@@ -45,7 +43,9 @@ const PokemonCard = function ({ name, img, id, type, values }) {
 PokemonCard.propTypes = {
   id: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
+  isActive: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  onCardClick: PropTypes.func,
   type: PropTypes.string.isRequired,
   values: PropTypes.object.isRequired
 }

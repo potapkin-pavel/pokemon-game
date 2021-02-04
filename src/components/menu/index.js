@@ -1,51 +1,35 @@
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import s from './style.module.css'
+
 import MenuItem from '../menu-item'
 
-const Menu = function ({ isMenuActive, onMenuClick, setMenuActive }) {
-  const pages = [
-    {
-      path: 'app',
-      title: 'home'
-    },
-    {
-      path: 'game',
-      title: 'game'
-    },
-    {
-      path: 'about',
-      title: 'about'
-    },
-    {
-      path: 'contact',
-      title: 'contact'
-    }
-  ]
-  const onLinkClick = (page) => {
-    setMenuActive(!isMenuActive)
-    onMenuClick && onMenuClick(page)
+import s from './style.module.css'
+
+const Menu = function ({ isActive, setActive, pagesList }) {
+  const onMenuItemClick = () => {
+    setActive(!isActive)
   }
-  return (
-    <div className={classNames(s.menuContainer, { [s.active]: isMenuActive },
-      { [s.deactive]: !isMenuActive })} >
-      <div className={s.overlay}/>
-      <div className={s.menuItems}>
-        <ul>
-          {pages.map(page =>
-            <MenuItem key={page.path} href={`/${page.path}`}
-              onLinkClick={() => onLinkClick(page.path)}>
-                {page.title.toUpperCase()}</MenuItem>)}
-        </ul>
+  if (isActive) {
+    return (
+      <div className={classNames(s.menuContainer, isActive ? [s.active] : [s.deactive])} >
+        <div className={s.overlay}/>
+        <div className={s.menuItems}>
+          <ul>
+            {pagesList.map(page =>
+              <MenuItem key={page.path} href={`/${page.path}`} onMenuItemClick={onMenuItemClick}>
+                {page.title.toUpperCase()}
+              </MenuItem>)}
+          </ul>
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else return <></>
 }
 
 Menu.propTypes = {
-  isMenuActive: PropTypes.bool.isRequired,
-  onMenuClick: PropTypes.func.isRequired,
-  setMenuActive: PropTypes.func.isRequired
+  isActive: PropTypes.bool.isRequired,
+  setActive: PropTypes.func.isRequired,
+  pagesList: PropTypes.array.isRequired
 }
 
 export default Menu

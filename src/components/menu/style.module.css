@@ -58,11 +58,11 @@
 }
 
 .menuContainer::before {
-  background: url(./../../assets/Stars.svg?sanitize=true);
+  background: url(./../../assets/stars.svg?sanitize=true);
 }
 
 .menuContainer::after {
-  background: url(./../../assets/Trees.svg?sanitize=true) bottom repeat-x;
+  background: url(./../../assets/trees.svg?sanitize=true) bottom repeat-x;
 }
 
 .menuContainer.deactive {

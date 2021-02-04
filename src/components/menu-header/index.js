@@ -3,22 +3,37 @@ import { useState } from 'react'
 import Menu from '../menu'
 import Navbar from '../navbar'
 
-const MenuHeader = function ({ onMenuHeaderClick }) {
-  const [isActive, setActive] = useState(false)
-  const onMenuClick = (page) => {
-    onMenuHeaderClick && onMenuHeaderClick(page)
+const pages = [
+  {
+    path: 'home',
+    title: 'home'
+  },
+  {
+    path: 'game',
+    title: 'game'
+  },
+  {
+    path: 'about',
+    title: 'about'
+  },
+  {
+    path: 'contact',
+    title: 'contact'
   }
+]
+
+const MenuHeader = function ({ isBgActive }) {
+  const [isActive, setActive] = useState(false)
   return (
     <>
-      <Menu isMenuActive={isActive} setMenuActive={setActive}
-        onMenuClick={onMenuClick}/>
-      <Navbar isBurgerActive={isActive} setBurgerActive={setActive} />
+      <Menu isActive={isActive} setActive={setActive} pagesList={pages}/>
+      <Navbar isBgActive={isBgActive} isActive={isActive} setActive={setActive} />
     </>
   )
 }
 
 MenuHeader.propTypes = {
-  onMenuHeaderClick: PropTypes.func.isRequired
+  isBgActive: PropTypes.bool.isRequired
 }
 
 export default MenuHeader
