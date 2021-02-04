@@ -13,7 +13,7 @@ function GamePage () {
 
   const handleCardClick = (text) => {
     const pokemonIndexInArray = pokemons.findIndex(pokemon => pokemon.id === text)
-    const pokemon = pokemons[pokemonIndexInArray]
+    const pokemon = { ...pokemons[pokemonIndexInArray] }
     pokemon.isActive = (!pokemon.isActive)
     setPokemons(prevState => {
       prevState[pokemonIndexInArray] = pokemon
