@@ -12,14 +12,8 @@ function GamePage () {
   const [pokemons, setPokemons] = useState(pokemonsArray)
 
   const handleCardClick = (text) => {
-    const pokemonIndexInArray = pokemons.findIndex(pokemon => pokemon.id === text)
-    const pokemon = { ...pokemons[pokemonIndexInArray] }
-    pokemon.isActive = (!pokemon.isActive)
-    setPokemons(prevState => {
-      prevState[pokemonIndexInArray] = pokemon
-      return [...prevState]
-    })
-    console.log(pokemons)
+    setPokemons(pokemonsArray => pokemonsArray.map(item =>
+      item.id === text ? { ...item, isActive: !item.isActive } : item))
   }
 
   return (
