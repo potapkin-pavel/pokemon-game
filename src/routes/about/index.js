@@ -1,21 +1,9 @@
-import PropTypes from 'prop-types'
-import Header from '../../components/header'
-import MenuHeader from '../../components/menu-header'
-
-function AboutPage ({ onChangePage }) {
-  const onMenuHeaderClick = (page) => {
-    onChangePage && onChangePage(page)
-  }
+function AboutPage () {
   return (
     <>
-      <MenuHeader onMenuHeaderClick={onMenuHeaderClick}/>
-      <Header title='Pokemon Game' desc='About Page'/>
+      <h1>This is About Page</h1>
     </>
   )
-}
-
-AboutPage.propTypes = {
-  onChangePage: PropTypes.func
 }
 
 export default AboutPage
