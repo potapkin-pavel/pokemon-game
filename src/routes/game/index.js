@@ -14,8 +14,6 @@ function GamePage () {
 
   const addRandomPokemon = () => {
     const newKey = database.ref().child('posts').push().key
-    console.log('#### new key for pokemon: ', newKey)
-    console.log('#### pokemons: ', pokemons)
     const pokemon = {
       abilities: ['keen-eye', 'tangled-feet', 'big-pecks'],
       base_experience: 122,
