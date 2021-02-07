@@ -37,19 +37,17 @@ function GamePage () {
         top: 'A'
       }
     }
-    database.ref('pokemons/' + newKey).set(pokemon).then(setPokemons(prevState => ({
-      ...prevState,
-      [newKey]: pokemon
-    }))).catch(err => console.error(err))
+    database.ref('pokemons/' + newKey).set(pokemon)
+      .then(() => setPokemons(prevState => ({ ...prevState, [newKey]: pokemon })))
+      .catch(err => console.error(err))
   }
 
   const handleCardClick = (key) => {
     const pokemon = { ...pokemons[key] }
     pokemon.active = !pokemon.active
-    database.ref('pokemons/' + key).set(pokemon).then(setPokemons(prevState => ({
-      ...prevState,
-      [key]: pokemon
-    }))).catch(err => console.error(err))
+    database.ref('pokemons/' + key).set(pokemon)
+      .then(() => setPokemons(prevState => ({ ...prevState, [key]: pokemon })))
+      .catch(err => console.error(err))
   }
 
   useEffect(() => {
