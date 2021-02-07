@@ -43,6 +43,7 @@ function GamePage () {
       ...prevState,
       [newKey]: pokemon
     }))
+    database.ref('pokemons').set(pokemons)
   }
 
   const handleCardClick = (key, id) => {
