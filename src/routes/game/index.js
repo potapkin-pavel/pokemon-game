@@ -39,11 +39,11 @@ function GamePage () {
         top: 'A'
       }
     }
-    setPokemons(prevState => ({
+
+    database.ref('pokemons/' + newKey).set(pokemon).then(setPokemons(prevState => ({
       ...prevState,
       [newKey]: pokemon
-    }))
-    database.ref('pokemons').set(pokemons)
+    }))).catch(err => console.error(err))
   }
 
   const handleCardClick = (key, id) => {
