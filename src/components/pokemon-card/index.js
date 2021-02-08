@@ -37,11 +37,11 @@ const PokemonCard = function ({ name, img, id, type, values, isActive, onCardCli
 }
 
 PokemonCard.propTypes = {
-  className: PropTypes.object.isRequired,
+  className: PropTypes.string,
   id: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
-  minimize: PropTypes.object.isRequired,
+  minimize: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onCardClick: PropTypes.func,
   type: PropTypes.string.isRequired,
