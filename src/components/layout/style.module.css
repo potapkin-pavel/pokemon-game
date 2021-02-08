@@ -33,7 +33,7 @@
 }
 
 .root .separator {
-    background: #53c9ff;
+    background-color: #53c9ff;
     width: 150px;
     height: 2px;
     margin: 1rem 0;
@@ -57,6 +57,7 @@
 .root .desc.full {
     grid-column-end: span 4;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .root .desc {
