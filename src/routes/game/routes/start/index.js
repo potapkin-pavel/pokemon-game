@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import Footer from '../../../../components/footer'
 import Layout from '../../../../components/layout'
-import PokemonAddButton from '../../../../components/pokemon-add-button'
+import Button from '../../../../components/button'
 import PokemonCard from '../../../../components/pokemon-card'
 
 import database from '../../../../services/firebase'
 
+import { PokemonContext } from '../../../../context/pokemon-context'
+
 import s from './style.module.css'
+import { useHistory } from 'react-router-dom'
 
 function StartPage () {
+  const history = useHistory()
+  const pokemonContext = useContext(PokemonContext)
   const [pokemons, setPokemons] = useState({})
 
   const addRandomPokemon = () => {
@@ -42,12 +47,18 @@ function StartPage () {
       .catch(err => console.error(err))
   }
 
+  const goToBoard = () => {
+    history.push('/game/board')
+  }
+
   const handleCardClick = (key) => {
     const pokemon = { ...pokemons[key] }
-    pokemon.active = !pokemon.active
-    database.ref('pokemons/' + key).set(pokemon)
-      .then(() => setPokemons(prevState => ({ ...prevState, [key]: pokemon })))
-      .catch(err => console.error(err))
+    pokemon.isSelected = !pokemon.isSelected
+    pokemonContext.onChangePokemon(pokemon)
+    setPokemons(prevState => ({ ...prevState, [key]: pokemon }))
+    // database.ref('pokemons/' + key).set(pokemon)
+    //   .then(() => setPokemons(prevState => ({ ...prevState, [key]: pokemon })))
+    //   .catch(err => console.error(err))
   }
 
   useEffect(() => {
@@ -59,12 +70,13 @@ function StartPage () {
   return (
     <>
       <Layout id='1' title='This is Game Page' colorBg='#d4d4d4'>
-        <PokemonAddButton handlePokemonAddButtonClick={addRandomPokemon}/>
+        <Button handlePokemonAddButtonClick={addRandomPokemon} isUpperCase={true}>Add Pokemon</Button>
         <div className={s.flex}>
-          {Object.entries(pokemons).map(([key, { name, img, id, type, values, active }]) =>
-            <PokemonCard key={key} name={name} img={img} id={id} type={type} values={values} isActive={active}
+          {Object.entries(pokemons).map(([key, { name, img, id, type, values, isSelected }]) =>
+            <PokemonCard key={key} name={name} img={img} id={id} type={type} values={values} isSelected={isSelected}
               onCardClick={() => handleCardClick(key, id)}/>)}
         </div>
+        <Button handlePokemonAddButtonClick={goToBoard} isUpperCase={true}>Go to board</Button>
       </Layout>
       <Footer/>
     </>
