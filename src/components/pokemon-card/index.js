@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import s from './style.module.css'
 
 const PokemonCard = function ({ name, img, id, type, values, isActive, isSelected, minimize, className, onCardClick }) {
-  
   return (
     <div className={classNames(className, s.pokemonCard, { [s.active]: isActive }, { [s.selected]: isSelected })}
       onClick={onCardClick}>
@@ -45,6 +44,7 @@ PokemonCard.propTypes = {
   id: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
+  isSelected: PropTypes.bool,
   minimize: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onCardClick: PropTypes.func,
