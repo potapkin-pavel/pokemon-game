@@ -8,9 +8,6 @@ import { PokemonContext } from '../../../../context/pokemon-context'
 
 const BoardPage = () => {
   const pokemonContext = useContext(PokemonContext)
-  
-  console.log(pokemonContext)
-
   return (
     <div className={s.root}>
       <div className={s.playerOne}>
