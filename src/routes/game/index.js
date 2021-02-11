@@ -9,9 +9,9 @@ import { PokemonContext } from '../../context/pokemon-context'
 
 function GamePage () {
   const [pokemons, setPokemons] = useState([])
-  
-  const handlerPokemonsChange = (pokemon) => {
-    setPokemons((prevState) => [...prevState, pokemon])
+
+  const handlerPokemonsChange = (pokemons) => {
+    setPokemons(pokemons)
   }
 
   const match = useRouteMatch()
