@@ -9,6 +9,7 @@ import { PokemonContext } from '../../../../context/pokemon-context'
 
 const BoardPage = () => {
   const [board, setBoard] = useState([])
+  const [player2, setPlayer2] = useState([])
   const { pokemons } = useContext(PokemonContext)
   const history = useHistory()
 
@@ -17,6 +18,11 @@ const BoardPage = () => {
     const boardRequest = await boardResponse.json()
     
     setBoard(boardRequest.data)
+
+    const player2Response = await fetch('https://reactmarathon-api.netlify.app/api/create-player')
+    const player2Request = await player2Response.json()
+
+    setPlayer2(player2Request.data)
   }, [])
 
   if (Object.keys(pokemons).length === 0) {
@@ -30,9 +36,11 @@ const BoardPage = () => {
   return (
     <div className={s.root}>
       <div className={s.playerOne}>
-        {pokemons.map(({ name, img, id, type, values }) =>
+        {
+          pokemons && pokemons.map(({ name, img, id, type, values }) =>
             <PokemonCard key={id} name={name} img={img} id={id} type={type} values={values} className={s.card}
-              minimize={true}/>)}
+              minimize={true}/>)
+        }
       </div>
       <div className={s.board}>
         {
@@ -42,6 +50,13 @@ const BoardPage = () => {
                 { item.card && <PokemonCard {...item} minimize={true} /> }
             </div>
           ))
+        }
+      </div>
+      <div className={s.playerTwo}>
+        {
+          player2 && player2.map((pokemon) =>
+            <PokemonCard key={pokemon.id} name={pokemon.name} img={pokemon.img} id={pokemon.id} type={pokemon.type}
+              values={pokemon.values} className={s.card} minimize={true}/>)
         }
       </div>
     </div>
