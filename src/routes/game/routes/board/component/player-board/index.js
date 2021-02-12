@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 import s from './style.module.css'
 
-const PlayerBoard = ({ cards, onClickCard }) => {
+const PlayerBoard = ({ cards, onClickCard, player }) => {
   const [isSelected, setSelected] = useState(null)
 
   return (
@@ -17,7 +17,7 @@ const PlayerBoard = ({ cards, onClickCard }) => {
           <div key={item.id} className={classNames({ [s.select]: isSelected === item.id }, s.cardBoard)}
             onClick={() => {
               setSelected(item.id)
-              onClickCard && onClickCard(item)
+              onClickCard && onClickCard({ player, ...item })
             }}>
               <PokemonCard id={item.id} img={item.img} minimize={true} name={item.name} type={item.type}
                 values={item.values} />
@@ -29,7 +29,8 @@ const PlayerBoard = ({ cards, onClickCard }) => {
 
 PlayerBoard.propTypes = {
   cards: PropTypes.array.isRequired,
-  onClickCard: PropTypes.func
+  onClickCard: PropTypes.func,
+  player: PropTypes.number
 }
 
 export default PlayerBoard
