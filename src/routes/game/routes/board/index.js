@@ -37,9 +37,9 @@ const BoardPage = () => {
     <div className={s.root}>
       <div className={s.playerOne}>
         {
-          pokemons && pokemons.map(({ name, img, id, type, values }) =>
-            <PokemonCard key={id} name={name} img={img} id={id} type={type} values={values} className={s.card}
-              minimize={true}/>)
+          pokemons && pokemons.map(({ id, img, name, type, values }) =>
+            <PokemonCard className={s.card} id={id} img={img} key={id}  minimize={true} name={name} type={type}
+              values={values} />)
         }
       </div>
       <div className={s.board}>
@@ -54,9 +54,9 @@ const BoardPage = () => {
       </div>
       <div className={s.playerTwo}>
         {
-          player2 && player2.map((pokemon) =>
-            <PokemonCard key={pokemon.id} name={pokemon.name} img={pokemon.img} id={pokemon.id} type={pokemon.type}
-              values={pokemon.values} className={s.card} minimize={true}/>)
+          player2 && player2.map(({ id, img, name, type, values }) =>
+            <PokemonCard className={s.card} id={id} img={img} key={id}  minimize={true} name={name} type={type}
+              values={values} />)
         }
       </div>
     </div>
