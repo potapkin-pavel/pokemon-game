@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import PokemonCard from '../../../../components/pokemon-card'
@@ -8,9 +8,16 @@ import s from './style.module.css'
 import { PokemonContext } from '../../../../context/pokemon-context'
 
 const BoardPage = () => {
+  const [board, setBoard] = useState([])
   const { pokemons } = useContext(PokemonContext)
-
   const history = useHistory()
+
+  useEffect(async () => {
+    const boardResponse = await fetch('https://reactmarathon-api.netlify.app/api/board')
+    const boardRequest = await boardResponse.json()
+    
+    setBoard(boardRequest.data)
+  }, [])
 
   if (Object.keys(pokemons).length === 0) {
     history.replace('/game')
