@@ -8,6 +8,19 @@ import s from './style.module.css'
 
 import { PokemonContext } from '../../../../context/pokemon-context'
 
+const counterWin = (board, player1, player2) => {
+  let player1Count = player1.length
+  let player2Count = player2.length
+  board.forEach((item) => {
+    if (item.card.possession === 'red') {
+      player2Count++
+    } else if (item.card.possession === 'blue') {
+      player1Count++
+    }
+  })
+  return [player1Count, player2Count]
+}
+
 const BoardPage = () => {
   const { pokemons } = useContext(PokemonContext)
 
