@@ -20,7 +20,8 @@ const BoardPage = () => {
   })
   const [player2, setPlayer2] = useState([])
   const [chosenCard, setChosenCard] = useState(null)
-  
+  const [steps, setSteps] = useState(0)
+
   const history = useHistory()
 
   useEffect(async () => {
@@ -71,6 +72,7 @@ const BoardPage = () => {
       }
 
       setBoard(request.data)
+      setSteps((prevState) => prevState + 1)
     }
   }
 
