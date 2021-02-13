@@ -89,6 +89,22 @@ const BoardPage = () => {
     }
   }
 
+  useEffect(() => {
+    if (steps === 9) {
+      console.log('####: Game is finished.')
+      const [count1, count2] = counterWin(board, player1, player2)
+      console.log('####: count1 =', count1)
+      console.log('####: count2 =', count2)
+      if (count1 > count2) {
+        console.log('####: WIN')
+      } else if (count2 > count1) {
+        console.log('####: LOSE')
+      } else {
+        console.log('####: DRAW')
+      }
+    }
+  }, [steps])
+
   return (
     <div className={s.root}>
       <div className={s.playerOne}>
