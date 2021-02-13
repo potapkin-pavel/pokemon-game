@@ -12,7 +12,7 @@ const PokemonCard = function ({
       onClick={onCardClick}>
       <div className={s.cardFront}>
         <div className={classNames(s.wrap, s.front)}>
-          <div className={classNames(s.pokemon, s[type])} style={{ backgroundColor: possession }}>
+          <div className={classNames(s.pokemon, s[type], s[possession])}>
             <div className={s.values}>
               <div className={classNames(s.count, s.top)}>{values.top}</div>
               <div className={classNames(s.count, s.right)}>{values.right}</div>
