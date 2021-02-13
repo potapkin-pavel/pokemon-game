@@ -61,7 +61,15 @@ const BoardPage = () => {
       })
 
       const request = await res.json()
-      
+
+      if (chosenCard.player === 1) {
+        setPlayer1((prevState) => prevState.filter((item) => item.id !== chosenCard.id))
+      }
+
+      if (chosenCard.player === 2) {
+        setPlayer2((prevState) => prevState.filter((item) => item.id !== chosenCard.id))
+      }
+
       setBoard(request.data)
     }
   }
