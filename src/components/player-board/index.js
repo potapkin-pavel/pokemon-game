@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import PokemonCard from '../../../../../../components/pokemon-card'
+import PokemonCard from '../pokemon-card'
 
 import classNames from 'classnames'
 

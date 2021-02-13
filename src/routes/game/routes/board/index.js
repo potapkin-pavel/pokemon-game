@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import PokemonCard from '../../../../components/pokemon-card'
-import PlayerBoard from './component/player-board'
+import PlayerBoard from '../../../../components/player-board'
 
 import s from './style.module.css'
 
