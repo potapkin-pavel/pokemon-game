@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 
 import s from './style.module.css'
 
-const PokemonAddButton = function ({ handlePokemonAddButtonClick, children, isUpperCase }) {
+const PokemonAddButton = function ({ handleButtonClick, children, isUpperCase }) {
   const onClickHandler = () => {
-    handlePokemonAddButtonClick()
+    handleButtonClick()
   }
 
   return (
@@ -16,7 +16,7 @@ const PokemonAddButton = function ({ handlePokemonAddButtonClick, children, isUp
 
 PokemonAddButton.propTypes = {
   children: PropTypes.string,
-  handlePokemonAddButtonClick: PropTypes.func,
+  handleButtonClick: PropTypes.func,
   isUpperCase: PropTypes.bool
 }
 
