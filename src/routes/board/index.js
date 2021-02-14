@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import PokemonCard from '../../../../components/pokemon-card'
-import PlayerBoard from '../../../../components/player-board'
+import PokemonCard from '../../components/pokemon-card'
+import PlayerBoard from '../../components/player-board'
 
 import s from './style.module.css'
 
-import { PokemonContext } from '../../../../context/pokemon-context'
+import { PokemonContext } from '../../context/pokemon-context'
 
 const counterWin = (board, player1, player2) => {
   let player1Count = player1.length
@@ -22,14 +22,16 @@ const counterWin = (board, player1, player2) => {
 }
 
 const BoardPage = () => {
-  const { pokemons } = useContext(PokemonContext)
+  const { pokemons, onChangePlayer1Cards, onChangePlayer2Cards, onGameResult } = useContext(PokemonContext)
 
   const [board, setBoard] = useState([])
   const [player1, setPlayer1] = useState(() => {
-    return Object.values(pokemons).map((item) => ({
+    const player1Cards = Object.values(pokemons).map((item) => ({
       ...item,
       possession: 'blue'
     }))
+    onChangePlayer1Cards(player1Cards)
+    return player1Cards
   })
   const [player2, setPlayer2] = useState([])
   const [chosenCard, setChosenCard] = useState(null)
@@ -47,10 +49,12 @@ const BoardPage = () => {
     const player2Request = await player2Response.json()
 
     setPlayer2(() => {
-      return player2Request.data.map((item) => ({
+      const player2Cards = player2Request.data.map((item) => ({
         ...item,
         possession: 'red'
       }))
+      onChangePlayer2Cards(player2Cards)
+      return player2Cards
     })
   }, [])
 
@@ -93,15 +97,14 @@ const BoardPage = () => {
     if (steps === 9) {
       console.log('####: Game is finished.')
       const [count1, count2] = counterWin(board, player1, player2)
-      console.log('####: count1 =', count1)
-      console.log('####: count2 =', count2)
       if (count1 > count2) {
-        console.log('####: WIN')
+        onGameResult('win')
       } else if (count2 > count1) {
-        console.log('####: LOSE')
+        onGameResult('lose')
       } else {
-        console.log('####: DRAW')
+        onGameResult('draw')
       }
+      history.replace('/game/finish')
     }
   }, [steps])
 
