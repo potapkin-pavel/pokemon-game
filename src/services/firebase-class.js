@@ -33,9 +33,15 @@ class Firebase {
     return await this.database.ref('pokemons').once('value').then(snapshot => snapshot.val())
   }
 
+  addNewPokemon = (pokemon) => {
+    const newKey = this.database.ref().child('pokemons').push().key
+    this.postPokemon(newKey, pokemon)
+  }
+
   postPokemon = (key, pokemon) => {
     this.database.ref('pokemons/' + key).set(pokemon)
   }
+
 }
 
 export default Firebase

@@ -1,5 +1,5 @@
 .root {
-  background-image: url(../../../../assets/board.png);
+  background-image: url(../../assets/board.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: calc(100vw / 1.71);
@@ -30,18 +30,18 @@
   background: none;
 }
 
-.card {
-  max-height: 10.8vw;
-  margin-top: -5vw;
-}
-
-.card:first-child {
-  margin-top: 0;
-}
 .playerOne {
   position: absolute;
   top: 4.3vw;
   left: 5vw;
-  width: 250px;
+  width: 18vw;
+  height: 50.3vw;
+}
+
+.playerTwo {
+  position: absolute;
+  top: 4.3vw;
+  right: 5vw;
+  width: 18vw;
   height: 50.3vw;
 }

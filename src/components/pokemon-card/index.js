@@ -4,13 +4,15 @@ import classNames from 'classnames'
 
 import s from './style.module.css'
 
-const PokemonCard = function ({ name, img, id, type, values, isActive, isSelected, minimize, className, onCardClick }) {
+const PokemonCard = function ({
+  className, isActive, id, img, isSelected, name, minimize, onCardClick, possession, type, values
+}) {
   return (
     <div className={classNames(className, s.pokemonCard, { [s.active]: isActive }, { [s.selected]: isSelected })}
       onClick={onCardClick}>
       <div className={s.cardFront}>
         <div className={classNames(s.wrap, s.front)}>
-          <div className={classNames(s.pokemon, s[type])}>
+          <div className={classNames(s.pokemon, s[type], s[possession])}>
             <div className={s.values}>
               <div className={classNames(s.count, s.top)}>{values.top}</div>
               <div className={classNames(s.count, s.right)}>{values.right}</div>
@@ -41,13 +43,14 @@ const PokemonCard = function ({ name, img, id, type, values, isActive, isSelecte
 
 PokemonCard.propTypes = {
   className: PropTypes.string,
+  isActive: PropTypes.bool,
   id: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
   isSelected: PropTypes.bool,
-  minimize: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  minimize: PropTypes.bool,
   onCardClick: PropTypes.func,
+  possession: PropTypes.string,
   type: PropTypes.string.isRequired,
   values: PropTypes.object.isRequired
 }
